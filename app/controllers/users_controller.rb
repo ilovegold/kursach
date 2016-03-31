@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
-  def new
+		
+  def profile
   end
 end

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'users/profile'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'users/new'
 
