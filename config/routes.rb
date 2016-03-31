@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get "/login" => "users/sessions#new"
     post "/login" => "users/sessions#create"
     get "/logout" => "users/sessions#destroy"
+    get "profile/edit" => "users/registrations#edit"
   end
 
   root 'static_pages#home'

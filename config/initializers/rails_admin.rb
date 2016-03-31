@@ -30,6 +30,18 @@ RailsAdmin.config do |config|
     delete
     show_in_app
 
+    if defined?(WillPaginate)
+      module WillPaginate
+        module ActiveRecord
+          module RelationMethods
+            alias_method :per, :per_page
+            alias_method :num_pages, :total_pages
+          end
+        end
+      end
+    end
+
+
     ## With an audit adapter, you can add:
     # history_index
     # history_show
