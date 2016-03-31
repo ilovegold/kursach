@@ -1,7 +1,11 @@
  <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
+      <% if user_signed_in? %>
+      <a class="navbar-brand" href="#"><%= greeting() %></a>
+      <% else %>
       <a class="navbar-brand" href="#">Stories</a>
+      <% end %>
     </div>
     <div class="col-sm-3 col-md-3">
         <form class="navbar-form" role="search">
@@ -19,7 +23,9 @@
       <li><%= link_to "Home",   root_path %></li>
        <li><%= link_to "Users",   '#' %></li>
        <li><%= link_to "Books",   '#' %></li>
+       <li><%= link_to "News",   '#' %></li>
        <li><%= link_to "Help",   help_path %></li>
+       
        <% if user_signed_in? %>
        <li><%= link_to "Sign out",   logout_path %></li>
        <% else %>

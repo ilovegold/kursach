@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
   
-  get 'users/profile'
+  get 'books/new'
+
+  get 'books/create'
+
+  get 'books/show'
+
+  resources :users
+  resources :books
+
+  get 'users/show'
+
+  
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  get 'users/new'
+  #get 'users/new'
 
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   devise_scope :user do
@@ -13,6 +24,8 @@ Rails.application.routes.draw do
   end
 
   root 'static_pages#home'
+
+  match '/profile', to: 'users#profile', via: 'get'
 
   match '/signup',  to: 'users#new', via: 'get'
 

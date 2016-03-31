@@ -1,2 +1,16 @@
-<h1>Users#profile</h1>
-<p>Find me in app/views/users/profile.html.erb</p>
+<ul>
+	<li><%= link_to "My profile",   profile_path %></li>
+	<li><%= link_to "Following",   '#' %></li>
+	<li><%= link_to "My Stories",   '#' %></li>
+	<li><%= link_to "Settings",   '#' %></li>
+	<li><%= link_to "My Achievements",   '#' %></li>
+	<% if current_user.role == 2 %>
+	<li><%= link_to "Admin Panel",   rails_admin_path %></li>
+	<% end %>
+</ul>
+
+<%= image_tag(current_user.avatar) %>
+<%= current_user.books.count %> </br>
+<% current_user.books.each do |book| %>
+	<%= book.name %></br>
+<% end %>
