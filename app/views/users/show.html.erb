@@ -10,4 +10,25 @@
 		</h1>
 	</section>
 	</aside>
+
+	<div class="span8">
+		
+	  <% if @user.books.any? %>
+      	<h3>Stories (<%= @user.books.count %>)</h3>
+      	<%= will_paginate @books %>
+      		<ul class="books">
+			  <% @books.each do |book| %>
+			    <li>
+			      <%= link_to book.name, book %>
+				  <span class="timestamp">
+				    Posted <%= time_ago_in_words(book.created_at) %> ago.
+				  </span>
+			    </li>
+			  <% end %>
+			</ul>
+      	<%= will_paginate @books %>
+    <% end %>
+
+		
+	</div>
 </div>
