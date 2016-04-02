@@ -1,2 +1,12 @@
-<h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+<h2>New Story</h2>
+
+<%= form_for(@book) do |f| %>
+
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+  
+<% end %>
+
+

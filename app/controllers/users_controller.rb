@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   		current_user.avatar = ""
   	end
 
+    @books = current_user.books.paginate(page: params[:page], :per_page => 10)
+    
   end
 
   def show

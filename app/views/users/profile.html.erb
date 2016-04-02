@@ -1,3 +1,4 @@
+<% provide(:title, current_user.name) %>
 <ul>
 	<li><%= link_to "My profile",   profile_path %></li>
 	<li><%= link_to "Following",   '#' %></li>
@@ -9,8 +10,37 @@
 	<% end %>
 </ul>
 
-<%= image_tag(current_user.avatar) %>
-<%= current_user.books.count %> </br>
-<% current_user.books.each do |book| %>
-	<%= book.name %></br>
-<% end %>
+<div class="row">
+	<aside class="span4">
+	<section>
+		<h1>
+		<%= image_tag(current_user.avatar) %>
+			<%= current_user.name %>
+		</h1>
+	</section>
+	</aside>
+	<div class="span8">
+		
+	  <% if @current_user.books.any? %>
+      	<h3>Stories (<%= @current_user.books.count %>)</h3>
+      	<button class="btn btn-default" type="submit">
+            Add new story
+        </button>
+      	<%= will_paginate @books %>
+      		<ul class="books">
+			  <% @books.each do |book| %>
+			    <li>
+			      <%= link_to book.name, book %>
+				  <span class="timestamp">
+				    Posted <%= time_ago_in_words(book.created_at) %> ago.
+				  </span>
+			    </li>
+			  <% end %>
+			</ul>
+      	<%= will_paginate @books %>
+    <% end %>
+
+		
+	</div>
+</div>
+
