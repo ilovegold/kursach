@@ -28,7 +28,14 @@ class BooksController < ApplicationController
   	@books = Book.paginate(page: params[:page], :per_page => 10)
   end
 
+  def edit
+    @book = Book.find(params[:id])
+  end
 
+  def update
+    
+
+  end
 
   private
 

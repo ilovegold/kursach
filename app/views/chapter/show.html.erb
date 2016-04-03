@@ -1,2 +1,10 @@
-<h1>Chapter#show</h1>
-<p>Find me in app/views/chapter/show.html.erb</p>
+<h1><%= @chapter.name %> </h1>
+<% if user_signed_in? %>
+	<a class="btn btn-default" href= <%= @chapter.id.to_s + "/edit" %> type="submit">
+      		Edit Chapter
+    </a>
+<% end %>
+<pre >
+<%= @chapter.content %>
+</pre>
+

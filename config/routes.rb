@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   
   get 'chapter/new'
   get 'chapter/show'
+
   
   #books
   get 'books/new'
   get 'books/create'
   get 'books/show'
+
 
   resources :users
   resources :books do
