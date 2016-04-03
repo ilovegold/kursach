@@ -1,12 +1,17 @@
-<h2>New Story</h2>
+<% provide(:title, 'New Story') %>
+<h1>New Story</h1>
 
-<%= form_for(@book) do |f| %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@book) do |f| %>
 
+      <%= f.label :name %>
+      <%= f.text_field :name %>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+      <%= f.label :genre %>
+      <%= f.text_field :genre %>
+
+      <%= f.submit "Create!", class: "btn btn-large btn-primary" %>
+    <% end %>
   </div>
-  
-<% end %>
-
-
+</div> 

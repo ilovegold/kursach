@@ -10,9 +10,10 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(params[:book])    # Not the final implementation!
-    if @book.save
-      # Handle a successful save.
+    @book = Book.new(book_params)    # Not the final implementation!
+    @book.user_id = current_user.id
+    if @book.save!
+      redirect_to @book
     else
       render 'new'
     end
@@ -25,5 +26,13 @@ class BooksController < ApplicationController
 
   def index
   	@books = Book.paginate(page: params[:page], :per_page => 10)
+  end
+
+
+
+  private
+
+  def book_params
+    params.require(:book).permit(:name, :genre)
   end
 end

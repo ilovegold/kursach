@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
   
-  #get 'books/new'
-
+  get 'chapter/new'
+  get 'chapter/show'
+  
+  #books
+  get 'books/new'
   get 'books/create'
   get 'books/show'
 
   resources :users
-  resources :books
+  resources :books do
+    resources :chapter
+  end
 
   get 'users/show'
 
   match 'profile/addbook', to: 'books#new', via: 'get'
 
-  
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   #get 'users/new'
@@ -33,5 +37,5 @@ Rails.application.routes.draw do
   match '/about', to: 'static_pages#about', via: 'get'  
   match '/contact', to: 'static_pages#contact', via: 'get'
 
-  get '*unmatched_route', :to => 'application#not_found'
+  #get '*unmatched_route', :to => 'application#not_found'
 end

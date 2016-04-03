@@ -23,9 +23,11 @@
 		
 	  <% if @current_user.books.any? %>
       	<h3>Stories (<%= @current_user.books.count %>)</h3>
-      	<button class="btn btn-default" type="submit">
-            Add new story
-        </button>
+      	<a class="btn btn-default" href="profile/addbook" type="submit">
+      		Add Story
+        </a>
+
+
       	<%= will_paginate @books %>
       		<ul class="books">
 			  <% @books.each do |book| %>

@@ -1,2 +1,20 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<% provide(:title, @book.name) %>
+<div class="row">
+	<div class="span8">
+	  <% if @book.chapters.any? %>
+      	<h3>Chapters (<%= @book.chapters.count %>)</h3>
+      	<%= will_paginate @chapters %>
+      		<ul class="books">
+			  <% @chapters.each do |chapter| %>
+			    <li>
+			      <%= link_to chapter.name, book_chapter_path(@book.id, chapter.id) %>
+				  <span class="timestamp">
+				  
+				  </span>
+			    </li>
+			  <% end %>
+			</ul>
+      	<%= will_paginate @chapters %>
+    <% end %>		
+	</div>
+</div>
