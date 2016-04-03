@@ -2,7 +2,7 @@
 <ul>
 	<li><%= link_to "My profile",   profile_path %></li>
 	<li><%= link_to "Following",   '#' %></li>
-	<li><%= link_to "My Stories",   '#' %></li>
+	<li><%= link_to "My Stories",   profile_mystories_path %></li>
 	<li><%= link_to "Settings",   profile_edit_path %></li>
 	<li><%= link_to "My Achievements",   '#' %></li>
 	<% if current_user.role == 2 %>
@@ -19,15 +19,13 @@
 		</h1>
 	</section>
 	</aside>
+	<a class="btn btn-default" href="profile/addbook" type="submit">
+      		Add Story
+        </a>
 	<div class="span8">
 		
 	  <% if @current_user.books.any? %>
       	<h3>Stories (<%= @current_user.books.count %>)</h3>
-      	<a class="btn btn-default" href="profile/addbook" type="submit">
-      		Add Story
-        </a>
-
-
       	<%= will_paginate @books %>
       		<ul class="books">
 			  <% @books.each do |book| %>
@@ -40,9 +38,7 @@
 			  <% end %>
 			</ul>
       	<%= will_paginate @books %>
-    <% end %>
-
-		
+    <% end %>		
 	</div>
 </div>
 

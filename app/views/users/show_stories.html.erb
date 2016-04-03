@@ -1,0 +1,19 @@
+<% provide(:title, 'My Stories') %>
+<h1>My Stories</h1>
+<a class="btn btn-default" href="addbook" type="submit">
+      		Add Story
+ </a>
+<%= will_paginate @books %>
+
+<ul class="books">
+  <% @books.each do |book| %>
+    <li>
+        <%= link_to book.name, book %>
+        <span class="timestamp">
+				    Posted <%= time_ago_in_words(book.updated_at) %> ago.
+				  </span>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate @books %>

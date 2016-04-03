@@ -3,7 +3,9 @@ class Book < ActiveRecord::Base
 	validates :user_id, presence: true
 	validates :name, presence: true, length: {maximum: 50}
 
-	default_scope -> { order('created_at DESC') }
+	default_scope -> { order('updated_at DESC') }
 	
 	has_many :chapters, dependent: :destroy
+	has_many :comments, dependent: :destroy
+	has_one :rating
 end

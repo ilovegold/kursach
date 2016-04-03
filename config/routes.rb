@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   
+  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
+
   get 'chapter/new'
   get 'chapter/show'
-
+  
+  post "markdown/preview"
   
   #books
   get 'books/new'
@@ -13,17 +16,18 @@ Rails.application.routes.draw do
   resources :users
   resources :books do
     resources :chapter
+    resources :comments
   end
 
-  get 'users/show'
+#  get 'users/show'
 
   match 'profile/addbook', to: 'books#new', via: 'get'
-
+  match 'profile/mystories', to: 'users#show_stories', via: 'get'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   #get 'users/new'
 
-  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
+  
   devise_scope :user do
     get "/login" => "users/sessions#new"
     post "/login" => "users/sessions#create"

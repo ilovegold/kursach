@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem "redcarpet"
+gem 'markitup-rails'
+gem 'ajaxful_rating'
+
 
 gem 'devise'
 gem 'rails_admin'

@@ -4,7 +4,9 @@
       		Edit Chapter
     </a>
 <% end %>
-<pre >
-<%= @chapter.content %>
+
+<pre>
+<%= markdown(@chapter.content) %>
 </pre>
+
 

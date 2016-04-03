@@ -22,6 +22,8 @@ class BooksController < ApplicationController
   def show
   	@book = Book.find(params[:id])
     @chapters = @book.chapters.paginate(page: params[:page], :per_page => 10)
+    @comments = @book.comments.paginate(page: params[:page], :per_page => 50)
+    @comment = Comment.new
   end
 
   def index

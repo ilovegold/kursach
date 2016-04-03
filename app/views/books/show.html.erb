@@ -18,6 +18,32 @@
 			  <% end %>
 			</ul>
       	<%= will_paginate @chapters %>
-    <% end %>		
+      <% end %>		
+	
+	<p>Comments : </p></br>
+	<%= will_paginate @comments %>
+		<ul class="comment">
+	  <% @comments.each do |comment| %>
+	    <li>
+	      <%= markdown(comment.content) %>
+	    </li>
+	  <% end %>
+	</ul>
+  	<%= will_paginate @comments %>
+  	<% if user_signed_in? %>
+  	<div class="row">
+  		<div class="span6 offset3">
+		<%= form_for @comment, url: book_comments_path(@book.id), html: {method: :get} do |f| %>
+
+	      <%= f.label :content %>
+	      <%= f.text_field :content %>
+
+	      <%= f.submit "leave comment", class: "btn btn-large btn-primary" %>
+	    <% end %>
+		</div>
+	</div> 
+	<% end %>
+
+
 	</div>
 </div>
