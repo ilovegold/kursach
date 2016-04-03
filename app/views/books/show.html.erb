@@ -1,11 +1,11 @@
 <% provide(:title, @book.name) %>
 <div class="row">
 	<div class="span8">
-		<a class="btn btn-default" href= "#" % type="submit">
+		<a class="btn btn-default" href= <%= @book.id.to_s + "/chapter/new"%>  type="submit">
       		Add New Chapter
    		 </a>
 	  <% if @book.chapters.any? %>
-      	<h3>Chapters (<%= @book.chapters.count %>)</h3>
+      	<h3> <%= @book.name %> </h3>
       	<%= will_paginate @chapters %>
       		<ul class="books">
 			  <% @chapters.each do |chapter| %>

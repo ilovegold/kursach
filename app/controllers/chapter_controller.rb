@@ -1,14 +1,14 @@
 class ChapterController < ApplicationController
   def new
   	@book_chapter = Chapter.new
+    @book_chapter.book_id = params[:book_id]
   end
 
   def create
   	@chapter = Chapter.new(chapter_params)
-
-    #@book.user_id = current_user.id
+    @chapter.book_id = params[:book_id]
     if @chapter.save!
-      redirect_to @chapter
+      redirect_to books_path.to_s + "/" + @chapter.book_id.to_s
     else
       render 'new'
     end
