@@ -9,8 +9,6 @@
     </div>
 
       
-
-
     <ul class="nav navbar-nav">
 
       <li class='search'>
@@ -28,12 +26,12 @@
        <li><%= link_to t('help'),   help_path %></li>
        
        <% if user_signed_in? %>
-       <li><%= link_to "Sign out",   logout_path %></li>
+       <li><%= link_to t('logout'),   logout_path %></li>
        <% else %>
-       <li><%= link_to "Sign in",   login_path %></li>
+       <li><%= link_to t('login'),   login_path %></li>
        <% end %>
        <li>
-       
+
        <div id='banner'>
           <%= form_tag '#', class: 'locale', method: 'post' do %>
             <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), onchange: 'this.form.submit()' %>
@@ -45,10 +43,6 @@
       </li>
 
     </ul>
-
-    
-
-    
   </div>
 
 </nav>

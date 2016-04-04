@@ -22,3 +22,14 @@
 en:
   hello: "Hello world"
   home: "Home"
+  add_story: "Add Story"
+  login: "Sign in"
+  logout: "Sign out"
+  stories: "Stories"
+  creatives: "Creatives"
+  admin_panel: "Admin panel"
+
+  myprofile: "My profile"
+  myreaders: "Following"
+  settings: "Settings"
+  achieves: "Achievements"

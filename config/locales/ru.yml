@@ -1,11 +1,23 @@
 ru:
+  myprofile: "Мой профиль"
+  myreaders: "Читаю"
+  settings: "Настройки"
+  achieves: "Ачивки"
+  creatives: "Креативы"
+  admin_panel: "Админка"
+
   hello: "Hello world"
   home: "Домой"
   users: "Пользователи"
   news: "Новости"
   help: "Помощь"
   about: "О проекте"
+  contact: "Обратная связь"
   title: "Хыыы"
+  add_story: Добавить Рассказ
+  login: "Вход"
+  logout: "Выход"
+  stories: "Рассказы"
   datetime:
     distance_in_words:
       about_x_hours:

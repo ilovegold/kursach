@@ -1,12 +1,12 @@
 <% provide(:title, current_user.name) %>
 <ul>
-	<li><%= link_to "My profile",   profile_path %></li>
-	<li><%= link_to "Following",   '#' %></li>
-	<li><%= link_to "My Stories",   profile_mystories_path %></li>
-	<li><%= link_to "Settings",   profile_edit_path %></li>
-	<li><%= link_to "My Achievements",   '#' %></li>
+	<li><%= link_to t('myprofile'),   profile_path %></li>
+	<li><%= link_to t('myreaders'),   '#' %></li>
+	<li><%= link_to t('stories'),   profile_mystories_path %></li>
+	<li><%= link_to t('settings'),   profile_edit_path %></li>
+	<li><%= link_to t('achieves'),   '#' %></li>
 	<% if current_user.role == 2 %>
-	<li><%= link_to "Admin Panel",   rails_admin_path %></li>
+	<li><%= link_to t('admin_panel'),   rails_admin_path %></li>
 	<% end %>
 </ul>
 
@@ -25,7 +25,7 @@
 	</section>
 	</aside>
 	<a class="btn btn-default" href="profile/addbook" type="submit">
-      		Add Story
+      		<%= t('add_story') %>
         </a>
 	<div class="span8">
 		
