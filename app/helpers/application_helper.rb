@@ -9,7 +9,7 @@ module ApplicationHelper
 	end
 
 	def greeting()
-		"Hi, " + ((user_signed_in?) ? current_user.name : "Guest")
+		((user_signed_in?) ? current_user.name : "Guest")
 	end
 
 	def markdown(text)

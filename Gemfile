@@ -5,6 +5,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem "redcarpet"
 gem 'markitup-rails'
+gem 'bootstrap_form'
 #gem 'ajaxful_rating', '3.0.0.beta8'
 #gem 'letsrate'
 gem 'ratyrate'

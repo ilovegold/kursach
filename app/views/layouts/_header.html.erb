@@ -7,7 +7,6 @@
       <a class="navbar-brand" href="#">Stories</a>
       <% end %>
     </div>
-    
 
       
 
@@ -22,19 +21,32 @@
         
       <% end %>
       </li>
-      <li><%= link_to "Home",   root_path %></li>
-       <li><%= link_to "Users",   users_path %></li>
-       <li><%= link_to "Books",   books_path %></li>
-       <li><%= link_to "News",   '#' %></li>
-       <li><%= link_to "Help",   help_path %></li>
+      <li><%= link_to t('home'),   root_path %></li>
+       <li><%= link_to t('users'),   users_path %></li>
+       <li><%= link_to t('books'),   books_path %></li>
+       <li><%= link_to t('news'),   '#' %></li>
+       <li><%= link_to t('help'),   help_path %></li>
        
        <% if user_signed_in? %>
        <li><%= link_to "Sign out",   logout_path %></li>
        <% else %>
        <li><%= link_to "Sign in",   login_path %></li>
        <% end %>
+       <li>
+       
+       <div id='banner'>
+          <%= form_tag '#', class: 'locale', method: 'post' do %>
+            <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), onchange: 'this.form.submit()' %>
+            <!--<%= submit_tag 'submit' %>!-->
+            <%= javascript_tag "$('.locale input').hide()" %>
+          <% end %>
+          <%= @page_title || t('title') %>
+      </div>
+      </li>
 
     </ul>
+
+    
 
     
   </div>

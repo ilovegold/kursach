@@ -2,14 +2,11 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for @chapter, url: book_chapter_path, html: {method: :get} do |f| %>
+    <%= bootstrap_form_for @chapter, url: book_chapter_path, html: {method: :patch} do |f| %>
 
-      <%= f.label :name %>
       <%= f.text_field :name %>
-
-      <%= f.label :content %>
-      <%= f.text_field :content %>
-
+      <%= f.text_area :content %>
+      
       <%= f.submit "Update!", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

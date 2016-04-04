@@ -3,5 +3,6 @@
 I18n.default_locale = :en
 
 LANGUAGES = [
-	['English', 'en']
+	['English', 'en'],
+	['Русский', 'ru']
 ]

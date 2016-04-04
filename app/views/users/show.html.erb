@@ -3,8 +3,12 @@
 	<aside class="span4">
 	<section>
 		<h1>
-		<%= image_tag(@user.avatar) %>
+		<% if @user.avatar.blank? %>
+		<%= link_to image_tag("default.jpg", alt: "AVA"), '#' %>
+		<% else %>
 		
+		<%= image_tag(@user.avatar) %>
+		<% end %>
 			<%= @user.name %>
 		
 		</h1>

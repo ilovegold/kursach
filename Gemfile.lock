@@ -53,6 +53,7 @@ GEM
       sass (>= 3.3.4)
     bootstrap-will_paginate (0.0.10)
       will_paginate
+    bootstrap_form (2.3.0)
     builder (3.2.2)
     byebug (8.2.2)
     carrierwave (0.11.0)
@@ -217,6 +218,7 @@ DEPENDENCIES
   acts_as_votable (~> 0.10.0)
   bootstrap-sass
   bootstrap-will_paginate
+  bootstrap_form
   byebug
   carrierwave
   coffee-rails (~> 4.1.0)

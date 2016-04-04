@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_i18n_locale_from_params
 
   #rescue_from Exception, :with => :not_found
   #rescue_from ActiveRecord::RecordNotFound, :with => :not_found   
@@ -23,6 +24,25 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :password_confirmation, :current_password) }
   end
 
+  def set_i18n_locale_from_params
+    if params[:locale]
+      if I18n.available_locales.map(&:to_s).include?(params[:locale])
+        I18n.locale = params[:locale]
+      else
+        flash.now[:notice] = "#{params[:locale]} translation not available"
+        logger.error flash.now[:notice]
+      end
+    end
+  end
+
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
+  def extract_locale_from_accept_language_header
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+  end
 
 
 end

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'chapter/show'
   
   post "markdown/preview"
-  
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   #books
   get 'books/new'
   get 'books/create'
@@ -18,16 +18,21 @@ Rails.application.routes.draw do
     resources :books do
       resources :chapter
     resources :comments
-    end  
+    end
+    match '/profile', to: 'users#profile', via: 'get'
+    match '/help', to: 'static_pages#help', via: 'get'
+    match '/about', to: 'static_pages#about', via: 'get'  
+    match '/contact', to: 'static_pages#contact', via: 'get'
+    match 'profile/addbook', to: 'books#new', via: 'get'
+    match 'profile/mystories', to: 'users#show_stories', via: 'get'
   end
-  
+  root 'static_pages#home'
 
 #  get 'users/show'
 
-  match 'profile/addbook', to: 'books#new', via: 'get'
-  match 'profile/mystories', to: 'users#show_stories', via: 'get'
+  
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
   #get 'users/new'
 
   
@@ -38,14 +43,12 @@ Rails.application.routes.draw do
     get "profile/edit" => "users/registrations#edit"
   end
 
-  root 'static_pages#home'
+  
 
-  match '/profile', to: 'users#profile', via: 'get'
+  
   match '/signup',  to: 'users#new', via: 'get'
-  match '/help', to: 'static_pages#help', via: 'get'
-  match '/about', to: 'static_pages#about', via: 'get'  
-  match '/contact', to: 'static_pages#contact', via: 'get'
+  
 
 
-  get '*unmatched_route', :to => 'application#not_found'
+  #get '*unmatched_route', :to => 'application#not_found'
 end

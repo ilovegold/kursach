@@ -1,12 +1,15 @@
 <h1><%= @chapter.name %> </h1>
 <% if user_signed_in? %>
+	<% if current_user.id == @chapter.book.user_id %>
 	<a class="btn btn-default" href= <%= @chapter.id.to_s + "/edit" %> type="submit">
       		Edit Chapter
     </a>
+    <% end %>
 <% end %>
 
-<pre>
+
 <%= markdown(@chapter.content) %>
-</pre>
+
+
 
 

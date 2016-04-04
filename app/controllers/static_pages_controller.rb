@@ -12,4 +12,9 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def index
+  	redirect_to root_path
+  end
+
 end
