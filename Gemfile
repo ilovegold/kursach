@@ -5,7 +5,15 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem "redcarpet"
 gem 'markitup-rails'
-gem 'ajaxful_rating'
+#gem 'ajaxful_rating', '3.0.0.beta8'
+#gem 'letsrate'
+gem 'ratyrate'
+gem 'acts_as_votable', '~> 0.10.0'
+gem 'acts-as-taggable-on'
+gem 'ferret'
+gem 'acts_as_ferret'
+
+gem 'safe_attributes'
 
 
 gem 'devise'

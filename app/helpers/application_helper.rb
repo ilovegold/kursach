@@ -24,5 +24,10 @@ module ApplicationHelper
         space_after_headers: true
     }
     Redcarpet::Markdown.new(renderer, options).render(text).html_safe
-  end
+  	end
+
+
+  	def latest_stories
+
+  	end
 end

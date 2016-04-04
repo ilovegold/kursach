@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
 
   get 'chapter/new'
@@ -12,12 +13,14 @@ Rails.application.routes.draw do
   get 'books/create'
   get 'books/show'
 
-
-  resources :users
-  resources :books do
-    resources :chapter
+  scope '(:locale)' do
+    resources :users
+    resources :books do
+      resources :chapter
     resources :comments
+    end  
   end
+  
 
 #  get 'users/show'
 
@@ -43,5 +46,6 @@ Rails.application.routes.draw do
   match '/about', to: 'static_pages#about', via: 'get'  
   match '/contact', to: 'static_pages#contact', via: 'get'
 
-  #get '*unmatched_route', :to => 'application#not_found'
+
+  get '*unmatched_route', :to => 'application#not_found'
 end

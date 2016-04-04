@@ -1,9 +1,17 @@
 <% provide(:title, @book.name) %>
+
 <div class="row">
+	<%= rating_for @book, "rate" , :disable_after_rate => true, :imdb_avg => true %>
 	<div class="span8">
-		<a class="btn btn-default" href= <%= @book.id.to_s + "/chapter/new"%>  type="submit">
-      		Add New Chapter
-   		 </a>
+		<% if user_signed_in? %>
+			<% if current_user.id == @book.user_id %>
+			<a class="btn btn-default" href= <%= @book.id.to_s + "/chapter/new"%>  type="submit">
+      			Add New Chapter
+   		 	</a>
+   		 	<% else %>
+   		 	<%= "Author is " + @book.user.name %>
+   		 	<% end %>
+   		<% end %>  
 	  <% if @book.chapters.any? %>
       	<h3> <%= @book.name %> </h3>
       	<%= will_paginate @chapters %>
@@ -25,7 +33,7 @@
 		<ul class="comment">
 	  <% @comments.each do |comment| %>
 	    <li>
-	      <%= markdown(comment.content) %>
+	      <%= markdown(comment.user.name + " : " + comment.content) %>
 	    </li>
 	  <% end %>
 	</ul>
@@ -35,7 +43,7 @@
   		<div class="span6 offset3">
 		<%= form_for @comment, url: book_comments_path(@book.id), html: {method: :get} do |f| %>
 
-	      <%= f.label :content %>
+	      <%= f.label current_user.name + " : " %>
 	      <%= f.text_field :content %>
 
 	      <%= f.submit "leave comment", class: "btn btn-large btn-primary" %>
@@ -43,7 +51,5 @@
 		</div>
 	</div> 
 	<% end %>
-
-
 	</div>
 </div>

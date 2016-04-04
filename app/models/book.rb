@@ -7,5 +7,18 @@ class Book < ActiveRecord::Base
 	
 	has_many :chapters, dependent: :destroy
 	has_many :comments, dependent: :destroy
-	has_one :rating
+
+	ratyrate_rateable "rate"
+
+
+
+	def self.search(search)
+	  if search
+	    Book.where('name LIKE ?', "%#{search}%")
+	  else
+	    Book.all
+	  end
+	end
+
+
 end

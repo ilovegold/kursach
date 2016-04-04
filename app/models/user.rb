@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   has_many :books, dependent: :destroy
   has_many :comments, dependent: :destroy
+  ratyrate_rater
+  acts_as_voter
 end

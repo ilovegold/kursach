@@ -27,7 +27,8 @@ class BooksController < ApplicationController
   end
 
   def index
-  	@books = Book.paginate(page: params[:page], :per_page => 10)
+  	@books = Book.search(params[:search]).paginate(page: params[:page], :per_page => 3)
+    @book_s = Book.search(params[:search])
   end
 
   def edit
